@@ -19,7 +19,7 @@ export const sidebarData: SidebarItem[] = [
       {
         title: "Crear Usuario",
         link: "/dashboard/users/create",
-      }
+      },
     ],
   },
   {
@@ -32,7 +32,7 @@ export const sidebarData: SidebarItem[] = [
       {
         title: "Crear Estudiante",
         link: "/dashboard/students/create",
-      }
+      },
     ],
   },
   {
@@ -42,6 +42,10 @@ export const sidebarData: SidebarItem[] = [
         title: "Ver Profesores",
         link: "/dashboard/teachers",
       },
+      {
+        title: "Crear Profesor",
+        link: "/dashboard/teachers/create",
+      },
     ],
   },
   {
@@ -50,6 +54,23 @@ export const sidebarData: SidebarItem[] = [
       {
         title: "Ver Cursos",
         link: "/dashboard/courses",
+      },
+      {
+        title: "Crear Curso",
+        link: "/dashboard/courses/create",
+      },
+    ],
+  },
+  {
+    title: "Especialidades",
+    submenu: [
+      {
+        title: "Ver Especialidades",
+        link: "/dashboard/specializations",
+      },
+      {
+        title: "Crear Especialidad",
+        link: "/dashboard/specializations/create",
       },
     ],
   },

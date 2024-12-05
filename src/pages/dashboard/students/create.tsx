@@ -10,7 +10,9 @@ export default function () {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    form.post("/students");
+    form.post("/students", {
+      onSuccess: () => alert("Estudiante creado"),
+    });
   };
 
   return (
@@ -38,7 +40,6 @@ export default function () {
       />
 
       <Form.Input
-        
         title="Dirección"
         onChange={(e) => form.setData("address", e.target.value)}
         required

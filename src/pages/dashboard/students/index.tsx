@@ -14,6 +14,7 @@ export default function () {
         <DataTable.Column header="Correo" field="email" />
         <DataTable.Column header="Teléfono" field="phone" />
         <DataTable.Column header="Dirección" field="address" />
+        <DataTable.Column header="Acciones" body={DataTable.Actions} />
       </DataTable>
       <Pagination
         currentPage={students?.current_page}
