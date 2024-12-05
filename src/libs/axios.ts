@@ -19,7 +19,6 @@ axios.interceptors.response.use(
   (error) => {
     if (error.response.status === 401) {
       useAuthStore.getState().setAuth(null);
-      localStorage.removeItem("auth-storage");
     }
 
     return Promise.reject(error);

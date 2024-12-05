@@ -5,10 +5,10 @@ interface SidebarItem {
 }
 
 export const sidebarData: SidebarItem[] = [
-  {
+  /* {
     title: "Dashboard",
     link: "/dashboard",
-  },
+  }, */
   {
     title: "Usuarios",
     submenu: [
@@ -16,6 +16,10 @@ export const sidebarData: SidebarItem[] = [
         title: "Ver Usuarios",
         link: "/dashboard/users",
       },
+      {
+        title: "Crear Usuario",
+        link: "/dashboard/users/create",
+      }
     ],
   },
   {
@@ -25,6 +29,10 @@ export const sidebarData: SidebarItem[] = [
         title: "Ver Estudiantes",
         link: "/dashboard/students",
       },
+      {
+        title: "Crear Estudiante",
+        link: "/dashboard/students/create",
+      }
     ],
   },
   {

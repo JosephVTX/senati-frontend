@@ -1,5 +1,9 @@
 /* import { Link, router } from "@inertiajs/react"; */
 import { Children } from "react";
+import { ModalConfirm } from "../custom/modal";
+import { FiEdit, FiTrash } from "react-icons/fi";
+import axios from "@/libs/axios";
+import { Link } from "react-router";
 /* import { CilPencil } from "../icons/cil/pencil";
 import { IconoirTrash } from "../icons/iconoir/trash";
 import { ModalConfirm } from "../custom/modal";
@@ -55,17 +59,20 @@ DataTable.Column = <T extends object>({ header }: DataTableColumn<T>) => {
   return <th>{header}</th>;
 };
 
-/* DataTable.Actions = ({ id }: { id: number }) => {
+DataTable.Actions = ({ id }: { id: number }) => {
+  const path = window.location.pathname.split("/").pop();
+
   return (
     <div className="flex gap-x-4 text-xl group">
-      <Link href={`${location.pathname}/${id}/edit`} method="get" as="button">
-        <CilPencil className="font-light" />
+      <Link to={`/dashboard/${path}/${id}`}>
+        <FiEdit />
       </Link>
-
       <ModalConfirm
         title="Eliminar"
-        onSuccess={() => router.delete(`${location.pathname}/${id}`)}
-        buttonContent={<IconoirTrash />}
+        onSuccess={() =>
+          axios.delete(`/${path}/${id}`).then(() => window.location.reload())
+        }
+        buttonContent={<FiTrash />}
       >
         <p>
           ¿Estás seguro de que quieres hacer esto? No podrás deshacer esta
@@ -74,4 +81,4 @@ DataTable.Column = <T extends object>({ header }: DataTableColumn<T>) => {
       </ModalConfirm>
     </div>
   );
-}; */
+};

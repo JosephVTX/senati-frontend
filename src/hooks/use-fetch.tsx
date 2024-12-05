@@ -1,4 +1,5 @@
 import axios from "@/libs/axios";
+import { useSearchParams } from "react-router";
 import {
   useQuery,
   UseQueryResult,
@@ -11,25 +12,43 @@ type FetchOptions<T> = {
   method?: Method;
   data?: any;
   config?: AxiosRequestConfig;
+  includeSearchParams?: boolean;
 } & Omit<UseQueryOptions<T>, "queryKey" | "queryFn">;
 
 export const useFetch = <T = unknown,>(
   path: string,
   options: FetchOptions<T> = {}
 ): UseQueryResult<T> => {
-  const { method = "GET", data, config, ...queryOptions } = options;
+  const [searchParams] = useSearchParams();
+  const {
+    method = "GET",
+    data,
+    config,
+    includeSearchParams = true,
+    ...queryOptions
+  } = options;
 
-  const queryKey: QueryKey = [path, method, JSON.stringify(data)];
+  // Si se deben incluir los parámetros de búsqueda en la solicitud, se añaden a `params`
+  const axiosConfig: AxiosRequestConfig = {
+    url: path,
+    method,
+    data,
+    ...config,
+  };
+
+  if (includeSearchParams && searchParams.toString()) {
+    axiosConfig.params = {
+      ...axiosConfig.params,
+      ...Object.fromEntries(searchParams.entries()),
+    };
+  }
+
+  const queryKey: QueryKey = [path, method, JSON.stringify(data), searchParams.toString()];
 
   return useQuery<T>({
     queryKey,
     queryFn: () =>
-      axios({
-        url: path,
-        method,
-        data,
-        ...config,
-      }).then((res) => res.data),
+      axios(axiosConfig).then((res) => res.data),
     refetchOnWindowFocus: false,
     refetchInterval: 1000 * 60 * 15,
     ...queryOptions,

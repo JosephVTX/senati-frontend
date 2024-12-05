@@ -35,6 +35,7 @@ const Routes = ({ children }: { children: React.ReactNode }) => {
         >
           {children}
         </Route>
+        <Route path="/" element={<Navigate to="/dashboard" />} />
       </R>
     </BrowserRouter>
   );
