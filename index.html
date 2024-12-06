@@ -1,22 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React + TS</title>
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=nunito:400,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.bunny.net" />
+    <link
+      href="https://fonts.bunny.net/css?family=nunito:400,700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
-      const theme = localStorage.getItem('theme')
-      const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      const colorScheme = theme === 'system' || !theme ? system : theme;
-      document.body.classList = 'light';
-      document.documentElement.dir = localStorage.getItem('rtlClass') || 'ltr';
-  </script>
+      // Verifica si ya existe un tema en localStorage
+      if (!localStorage.getItem("theme")) {
+        // Si no hay tema, establece "light" por defecto
+        localStorage.setItem("theme", "light");
+      }
+
+      // Obtiene el tema actual desde localStorage
+      const theme = localStorage.getItem("theme");
+
+      // Determina el esquema de color del sistema
+      const system = window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+
+      // Define el esquema de color a usar
+      const colorScheme = theme === "system" || !theme ? system : theme;
+
+      // Aplica las clases al body y dir al documento
+      document.body.classList = colorScheme;
+      document.documentElement.dir = localStorage.getItem("rtlClass") || "ltr";
+    </script>
   </body>
 </html>

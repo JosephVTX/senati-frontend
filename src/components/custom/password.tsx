@@ -15,7 +15,7 @@ export const Password = ({
       />
       <span
         onClick={() => setShow(!show)}
-        className="absolute inset-y-0 right-0 flex items-center pr-3 text-xl"
+        className="absolute inset-y-0 right-0 flex items-center pr-3 text-xl dark:text-gray-100"
       >
         {show ? (
           <svg

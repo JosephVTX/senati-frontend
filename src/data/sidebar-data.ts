@@ -5,10 +5,10 @@ interface SidebarItem {
 }
 
 export const sidebarData: SidebarItem[] = [
-  /* {
+  {
     title: "Dashboard",
     link: "/dashboard",
-  }, */
+  },
   {
     title: "Usuarios",
     submenu: [

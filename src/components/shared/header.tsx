@@ -6,6 +6,8 @@ import { useThemeStore } from "@/store/theme-store";
 /* import { PageProps } from "@/types";
 import { IcOutlineLogout } from "../icons/ic/outline-logout"; */
 import { FiLogOut, FiMenu, FiUser } from "react-icons/fi";
+import { FaRegMoon } from "react-icons/fa";
+import { FaSun } from "react-icons/fa";
 import Dropdown from "../ui/dropdown";
 import { Link } from "react-router";
 
@@ -13,7 +15,7 @@ import { useAuthStore } from "@/store/auth-store";
 import axios from "@/libs/axios";
 
 export const Header = () => {
-  const { semidark, menu, toggleSidebar } = useThemeStore();
+  const { semidark, menu, theme,  toggleSidebar, setTheme } = useThemeStore();
 
   const { auth, setAuth } = useAuthStore();
 
@@ -44,7 +46,16 @@ export const Header = () => {
           <div className="sm:flex-1 ltr:sm:ml-0 ltr:ml-auto sm:rtl:mr-0 rtl:mr-auto flex items-center space-x-1.5 lg:space-x-2 rtl:space-x-reverse dark:text-[#d0d2d6]">
             <div className="sm:ltr:mr-auto sm:rtl:ml-auto"></div>
 
-            <div className="dropdown shrink-0 flex">
+            <div className="dropdown shrink-0 flex items-center gap-4">
+              <button
+                type="button"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="dark:text-white-light/90 dark:hover:text-white-light/100 text-black/60 hover:text-black/80 text-2xl"
+              >
+                {
+                  theme === "dark" ? <FaSun /> : <FaRegMoon />
+                }
+              </button>
               <Dropdown
                 offset={[0, 8]}
                 placement={`bottom-end`}
