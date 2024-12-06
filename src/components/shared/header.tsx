@@ -93,12 +93,12 @@ export const Header = () => {
                     </div>
                   </li>
                   <li >
-                    <Link
-                      to="/profile"
+                    <button
+                      onClick={() => alert("Perfil")}
                       className="block px-4 py-3 hover:bg-white-light dark:hover:bg-dark/10"
                     >
                       <FiUser className="mr-2" /> Perfil
-                    </Link>
+                    </button>
                   </li>
                   <li className="border-t border-white-light dark:border-white-light/10">
                     <button

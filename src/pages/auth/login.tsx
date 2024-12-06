@@ -5,7 +5,7 @@ import { useAuthStore } from "@/store/auth-store";
 
 export default function Login() {
   const form = useForm({
-    email: "user@gmail.com",
+    email: "muchancho@gmail.com",
     password: "password",
   });
 

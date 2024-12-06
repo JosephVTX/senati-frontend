@@ -1,5 +1,6 @@
 import { Filters } from "@/components/shared/filters";
 import { Pagination } from "@/components/shared/pagination";
+import Toolbar from "@/components/shared/toolbar";
 import { DataTable } from "@/components/ui/datatable";
 import { useFetch } from "@/hooks/use-fetch";
 
@@ -8,6 +9,7 @@ export default function () {
 
   return (
     <div>
+      <Toolbar title="Lista de Profesores" />
       <Filters />
       <DataTable value={teachers?.data}>
         <DataTable.Column header="Nombre" field="name" />

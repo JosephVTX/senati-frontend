@@ -90,9 +90,9 @@ const StudentManagementDashboard = () => {
   return (
     <div className=" text-gray-800 dark:text-gray-100">
       <div className="p-4">
-        <h1 className="text-4xl font-extrabold mb-8 text-center">
-          Dashboard de Gestión Educativa
-        </h1>
+        {/* <h1 className="text-4xl font-extrabold mb-8 text-center">
+          Estadísticas de la Plataforma
+        </h1> */}
 
         {/* Tarjetas de resumen */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
